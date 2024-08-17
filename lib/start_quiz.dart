@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class StartQuiz extends StatelessWidget {
-  const StartQuiz({super.key});
+  const StartQuiz(this.startQuiz, {super.key});
+
+  final void Function() startQuiz;
 
   @override
   Widget build(BuildContext context) {
@@ -40,5 +42,7 @@ class StartQuiz extends StatelessWidget {
     );
   }
 
-  void onPressed() {}
+  void onPressed() {
+    startQuiz();
+  }
 }
