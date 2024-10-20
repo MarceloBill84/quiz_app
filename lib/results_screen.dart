@@ -4,18 +4,14 @@ import 'package:quiz_app/data/questions.dart';
 import 'package:quiz_app/questions_summary.dart';
 
 class ResultsScreen extends StatelessWidget {
-  const ResultsScreen({
-    super.key,
-    required this.chosenAnswers,
-    required this.restartQuiz
-  });
+  const ResultsScreen(
+      {super.key, required this.chosenAnswers, required this.restartQuiz});
 
   final List<String> chosenAnswers;
   final void Function() restartQuiz;
 
   List<Map<String, Object>> getSummaryData() {
     final List<Map<String, Object>> summary = [];
-//Text(((data['question_index'] as int) + 1).toString()),
     for (var i = 0; i < chosenAnswers.length; i++) {
       summary.add({
         'question_index': i,
@@ -47,7 +43,7 @@ class ResultsScreen extends StatelessWidget {
             Text(
               'You answered $totalCorrectQuestions out of $totalQuestions questions correctly',
               style: GoogleFonts.lato(
-                color: Color.fromARGB(255, 217, 176, 255),
+                color: const Color.fromARGB(255, 217, 176, 255),
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
@@ -60,7 +56,14 @@ class ResultsScreen extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            TextButton(onPressed: restartQuiz, child: const Text('Restart Quiz')),
+            TextButton.icon(
+              onPressed: restartQuiz,
+              style: TextButton.styleFrom(
+                foregroundColor: Colors.white,
+              ),
+              icon: const Icon(Icons.refresh),
+              label: const Text('Restart Quiz'),
+            ),
           ],
         ),
       ),
